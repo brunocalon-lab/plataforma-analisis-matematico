@@ -88,7 +88,7 @@ export default function DiagnosticAssistant({ onNavigateToTree }) {
               {result.explanation}
             </p>
 
-            <div style={{ background: '#ffffff', padding: '0.85rem 1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--green-100)', marginBottom: '1.25rem', fontSize: '0.9rem', color: 'var(--green-800)' }}>
+            <div style={{ background: 'var(--bg-card)', padding: '0.85rem 1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--green-100)', marginBottom: '1.25rem', fontSize: '0.9rem', color: 'var(--green-800)' }}>
               <strong>Acción pedagógica:</strong> {result.recommendedAction}
             </div>
 

@@ -61,6 +61,7 @@ export const LATERAL_LIMITS = {
       leftLimit: '\\lim_{x \\to 2^-} g(x) = 2 + 4 = 6',
       rightLimit: '\\lim_{x \\to 2^+} g(x) = 2^2 = 4',
       conclusion: 'Como \\lim_{x \\to 2^-} g(x) \\neq \\lim_{x \\to 2^+} g(x), se concluye rigurosamente que \\nexists \\lim_{x \\to 2} g(x).',
+      summaryLine: 'Laterales distintos (6 ≠ 4) → No existe el límite en x = 2',
       exists: false
     },
     {
@@ -70,6 +71,7 @@ export const LATERAL_LIMITS = {
       leftLimit: '\\lim_{x \\to 2^-} h(x) = 2 + 2 = 4',
       rightLimit: '\\lim_{x \\to 2^+} h(x) = 2^2 = 4',
       conclusion: 'Como \\lim_{x \\to 2^-} h(x) = \\lim_{x \\to 2^+} h(x) = 4, el límite existe y vale 4: \\lim_{x \\to 2} h(x) = 4.',
+      summaryLine: 'Laterales iguales (4 = 4) → El límite existe y vale 4',
       exists: true
     }
   ]
@@ -83,29 +85,31 @@ export const DIRECT_TENDENCIES = {
       title: 'Tendencias Directas Inmediatas (NO son indeterminaciones)',
       items: [
         {
-          tendency: '\\frac{f(x) \\to 0}{g(x) \\to k} = 0 \\quad (k \\neq 0)',
+          tendency: '\\frac{f(x) \\to 0}{g(x) \\to k} \\to 0 \\quad (k \\neq 0)',
           note: 'Numerador tiende a 0 y denominador a una constante no nula.',
-          status: 'Cálculo directo: da 0.'
+          status: 'Cálculo directo: tiende a 0.'
         },
         {
-          tendency: '\\frac{f(x) \\to k}{g(x) \\to 0} = \\infty \\quad (k \\neq 0)',
-          note: 'Constante sobre cero: ¡NO es indeterminación! Tiende a infinito (sugiere Asíntota Vertical).',
-          status: 'Tiende a ±∞ (analizar signos laterales).'
+          tendency: '\\frac{f(x) \\to k}{g(x) \\to 0} \\to \\pm\\infty \\quad (k \\neq 0)',
+          note: 'Constante sobre cero: ¡NO es indeterminación! La expresión crece sin límite.',
+          status: 'Tiende a ±∞ (¡Obligatorio analizar laterales: +∞, −∞ o no existe!).',
+          clarification: 'El signo depende del signo del denominador al acercarse a cero (0⁺ o 0⁻). Si los laterales difieren en signo (+∞ ≠ −∞), el límite bilateral no existe.'
         },
         {
-          tendency: '\\frac{f(x) \\to k}{g(x) \\to \\infty} = 0 \\quad (k \\in \\mathbb{R})',
+          tendency: '\\frac{f(x) \\to k}{g(x) \\to \\pm\\infty} \\to 0 \\quad (k \\in \\mathbb{R})',
           note: 'Constante sobre una cantidad que crece sin límite.',
-          status: 'Cálculo directo: da 0.'
+          status: 'Cálculo directo: tiende a 0.'
         },
         {
-          tendency: '\\frac{f(x) \\to \\infty}{g(x) \\to k} = \\infty \\quad (k \\in \\mathbb{R})',
+          tendency: '\\frac{f(x) \\to \\pm\\infty}{g(x) \\to k} \\to \\pm\\infty \\quad (k \\neq 0)',
           note: 'Infinito sobre constante.',
-          status: 'Cálculo directo: tiende a ±∞.'
+          status: 'Cálculo directo: tiende a ±∞ según regla de signos.'
         },
         {
-          tendency: 'k^\\infty \\implies \\begin{cases} \\infty & \\text{si } k > 1 \\\\ 0 & \\text{si } 0 < k < 1 \\end{cases}',
-          note: 'Base constante positiva elevada a infinito.',
-          status: 'Depende de si la base es mayor o menor a 1.'
+          tendency: 'k^\\infty \\implies \\begin{cases} \\to +\\infty & \\text{si } k > 1 \\\\ \\to 0 & \\text{si } 0 < k < 1 \\\\ [1^\\infty] & \\text{si } k = 1 \\text{ (Indeterminación)} \\end{cases}',
+          note: 'Base constante positiva elevada a infinito (Apunte pág. 9).',
+          status: 'Para k > 1 tiende a +∞; para 0 < k < 1 tiende a 0. Si k = 1 es indeterminación [1^∞].',
+          warning: '¡Advertencia de Cátedra! La base debe ser estrictamente positiva (k > 0). Si k ≤ 0, la función exponencial no está definida en los reales o presenta alternancia de signos sin límite.'
         }
       ]
     },
@@ -135,10 +139,10 @@ export const DIRECT_TENDENCIES = {
     title: 'Ejemplo del Apunte (Tendencia exponencial según laterales)',
     latex: '\\lim_{x \\to 3} \\left( \\frac{2}{5} \\right)^{\\frac{1}{x - 3}}',
     steps: [
-      'Al tender x → 3, el exponente es 1/(x − 3), lo que genera una tendencia de constante sobre cero (1/0 = ∞).',
+      'Al tender x → 3, el exponente es 1/(x − 3), lo que genera una tendencia de constante sobre cero (1/0 que tiende a ±∞).',
       'Como el signo del infinito depende de si nos acercamos por izquierda o derecha, es obligatorio estudiar los laterales:',
-      '• Por izquierda: x → 3⁻ ⇒ x − 3 < 0 ⇒ 1/(x − 3) → −∞. Entonces (2/5)⁻∞ = (5/2)⁺∞ = +∞.',
-      '• Por derecha: x → 3⁺ ⇒ x − 3 > 0 ⇒ 1/(x − 3) → +∞. Como la base 2/5 está entre 0 y 1, (2/5)⁺∞ = 0.',
+      '• Por izquierda: x → 3⁻ ⇒ x − 3 < 0 ⇒ 1/(x − 3) tiende a −∞. Entonces (2/5)⁻∞ = (5/2)⁺∞ tiende a +∞.',
+      '• Por derecha: x → 3⁺ ⇒ x − 3 > 0 ⇒ 1/(x − 3) tiende a +∞. Como la base 2/5 está entre 0 y 1, (2/5)⁺∞ tiende a 0.',
       'Conclusión cátedra: Dado que los límites laterales son distintos (+∞ ≠ 0), el límite NO existe.'
     ]
   }
@@ -160,7 +164,12 @@ export const ALGEBRAIC_PROPERTIES = {
       critical: true
     },
     { num: 7, name: 'Potencia Natural', math: '\\lim_{x \\to a} [f(x)]^n = \\left[ \\lim_{x \\to a} f(x) \\right]^n' },
-    { num: 8, name: 'Función Potencial Exponencial', math: '\\lim_{x \\to a} [f(x)]^{g(x)} = \\left[ \\lim_{x \\to a} f(x) \\right]^{\\lim_{x \\to a} g(x)}' }
+    { 
+      num: 8, 
+      name: 'Función Potencial Exponencial', 
+      math: '\\lim_{x \\to a} [f(x)]^{g(x)} = \\left[ \\lim_{x \\to a} f(x) \\right]^{\\lim_{x \\to a} g(x)}',
+      hasIndeterminationCallout: true
+    }
   ],
   apunteExample: {
     title: 'Ejemplo de Aplicación Directa (Apunte pág. 8)',
@@ -174,6 +183,7 @@ export const ALGEBRAIC_PROPERTIES = {
       'Las propiedades exigen que cada límite individual EXISTA y sea FINITO.',
       'En el cociente (propiedad 6), la regla prohíbe taxativamente que el límite del denominador sea 0.',
       'Si el numerador y el denominador tienden a 0, NO se puede aplicar la propiedad para decir "0 / 0". Esa expresión carece de sentido numérico y constituye una INDETERMINACIÓN.',
+      'En la función potencial-exponencial (propiedad 8), NO aplica si se presentan formas del tipo 1^∞, 0^0 o ∞^0: son indeterminaciones que requieren artificios específicos.',
       'Las propiedades algebraicas jamás salvan una indeterminación: indican que se requiere transformación previa en el Módulo de Indeterminaciones.'
     ]
   }

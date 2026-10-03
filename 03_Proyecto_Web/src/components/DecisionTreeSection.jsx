@@ -90,7 +90,7 @@ export default function DecisionTreeSection({ selectedForm, onSelectForm }) {
                     <p>{branch.subtitle}</p>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-                    <div style={{ background: '#fff', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
+                    <div style={{ background: 'var(--bg-card)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                       <MathView math={branch.math} />
                     </div>
                     <span className="section-stage-badge badge-blue">{branch.badge}</span>

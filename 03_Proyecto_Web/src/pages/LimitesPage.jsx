@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, 
+  ArrowRight,
   BookOpen, 
   Compass, 
+  TrendingUp, 
+  Sparkles, 
+  HelpCircle, 
   CheckCircle, 
   XCircle, 
-  AlertTriangle, 
-  HelpCircle, 
-  GitBranch, 
-  TrendingUp, 
-  ChevronDown, 
+  AlertTriangle,
+  ChevronDown,
   ChevronUp,
-  Sparkles
+  GitBranch
 } from 'lucide-react';
 import MathView from '../components/MathView';
 import { 
@@ -40,7 +41,7 @@ export default function LimitesPage() {
     <div className="limites-page">
       {/* Barra de Migas de Pan */}
       <div className="module-breadcrumb-bar">
-        <Link to="/" className="back-link">
+        <Link to="/" className="breadcrumb-link back-link">
           <ArrowLeft size={16} />
           <span>Hub Principal</span>
         </Link>
@@ -51,9 +52,10 @@ export default function LimitesPage() {
         </span>
       </div>
 
-      {/* Sub-navegador de secciones del Módulo B */}
-      <div className="indeterminaciones-subnav">
+      {/* Sub-navegador sticky de secciones del Módulo B */}
+      <div className="indeterminaciones-subnav limites-subnav-sticky">
         <button 
+          type="button"
           className={`subnav-pill ${activeSubNav === 'concepto' ? 'active' : ''}`}
           onClick={() => scrollToSub('concepto')}
         >
@@ -61,6 +63,7 @@ export default function LimitesPage() {
           <span>1. Noción y Aproximación</span>
         </button>
         <button 
+          type="button"
           className={`subnav-pill ${activeSubNav === 'laterales' ? 'active' : ''}`}
           onClick={() => scrollToSub('laterales')}
         >
@@ -68,6 +71,7 @@ export default function LimitesPage() {
           <span>2. Límites Laterales y Existencia</span>
         </button>
         <button 
+          type="button"
           className={`subnav-pill ${activeSubNav === 'tendencias' ? 'active' : ''}`}
           onClick={() => scrollToSub('tendencias')}
         >
@@ -75,6 +79,7 @@ export default function LimitesPage() {
           <span>3. Tendencias Directas (k/0, k/∞)</span>
         </button>
         <button 
+          type="button"
           className={`subnav-pill ${activeSubNav === 'propiedades' ? 'active' : ''}`}
           onClick={() => scrollToSub('propiedades')}
         >
@@ -82,6 +87,7 @@ export default function LimitesPage() {
           <span>4. Propiedades Algebraicas</span>
         </button>
         <button 
+          type="button"
           className={`subnav-pill ${activeSubNav === 'epsilon' ? 'active' : ''}`}
           onClick={() => scrollToSub('epsilon')}
         >
@@ -91,10 +97,10 @@ export default function LimitesPage() {
       </div>
 
       {/* SECCIÓN 1: NOCIÓN INTUITIVA DE LÍMITE */}
-      <section id="concepto" className="section-container">
+      <section id="concepto" className="section-container scroll-section">
         <div className="section-header">
           <div className="section-stage-badge badge-blue">
-            <span>Concepto Fundamental</span>
+            <span>Fundamento Matemático</span>
           </div>
           <h2 className="section-title">{CONCEPT_INTRO.title}</h2>
           <p className="section-desc">
@@ -102,29 +108,31 @@ export default function LimitesPage() {
           </p>
         </div>
 
-        <div className="concept-definition-card">
-          <div className="concept-math-highlight">
+        {/* Notación formal destacada */}
+        <div className="concept-notation-card">
+          <div className="notation-badge">Notación Formal</div>
+          <div className="notation-math">
             <MathView math={CONCEPT_INTRO.notation} block />
           </div>
-          <p className="concept-meaning-text">
+          <p className="notation-meaning">
             {CONCEPT_INTRO.meaning}
           </p>
         </div>
 
-        {/* Ejemplo Clave del Apunte: Función con Agujero */}
-        <div className="interactive-example-card" style={{ marginTop: '2rem' }}>
-          <div className="card-header-styled">
-            <span className="stage-tag">Ejemplo de Cátedra (Apunte pág. 1-2)</span>
-            <h3>{CONCEPT_INTRO.exampleKey.title}</h3>
+        {/* Ejemplo canónico del apunte */}
+        <div className="worked-example-card">
+          <div className="worked-example-header">
+            <h4>{CONCEPT_INTRO.exampleKey.title}</h4>
+            <span className="badge-tag">Apunte Oficial pág. 1</span>
           </div>
 
-          <div className="example-formula-row">
+          <div className="example-formula-box">
             <div>
               <strong>Función:</strong>
               <MathView math={CONCEPT_INTRO.exampleKey.functionLatex} />
             </div>
             <div>
-              <strong>Dominio:</strong>
+              <strong>Dominio analítico:</strong>
               <MathView math={CONCEPT_INTRO.exampleKey.domainLatex} />
             </div>
             <div>
@@ -137,14 +145,19 @@ export default function LimitesPage() {
             {CONCEPT_INTRO.exampleKey.explanation}
           </p>
 
+          {/* Indicador de scroll para pantallas pequeñas */}
+          <div className="mobile-scroll-hint">
+            <span>← Desplazá horizontalmente para ver la tabla completa →</span>
+          </div>
+
           <div className="table-responsive-container">
             <table className="concept-values-table">
               <thead>
                 <tr>
-                  <th>Trayectoria</th>
-                  <th>Valor de x (Variable)</th>
-                  <th>Valor de f(x) (Imagen)</th>
-                  <th>Observación pedagógica</th>
+                  <th scope="col">Trayectoria</th>
+                  <th scope="col">Valor de x (Variable)</th>
+                  <th scope="col">Valor de f(x) (Imagen)</th>
+                  <th scope="col">Observación pedagógica</th>
                 </tr>
               </thead>
               <tbody>
@@ -176,7 +189,6 @@ export default function LimitesPage() {
             </div>
             <div className="svg-container-box">
               <svg viewBox="0 0 500 240" className="concept-svg" preserveAspectRatio="xMidYMid meet">
-                {/* Cuadrícula suave */}
                 <defs>
                   <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
                     <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" strokeWidth="1" />
@@ -190,26 +202,26 @@ export default function LimitesPage() {
                 <text x="465" y="205" fontSize="12" fill="#64748b">x</text>
                 <text x="115" y="15" fontSize="12" fill="#64748b">y</text>
 
-                {/* Marcas de ejes: x=1 (240px), y=2 (120px) */}
+                {/* Marcas de ejes */}
                 <line x1="240" y1="195" x2="240" y2="205" stroke="#0f172a" strokeWidth="1.5" />
                 <text x="235" y="218" fontSize="12" fontWeight="600" fill="#0f172a">x₀ = 1</text>
 
                 <line x1="115" y1="120" x2="125" y2="120" stroke="#0f172a" strokeWidth="1.5" />
                 <text x="80" y="125" fontSize="12" fontWeight="600" fill="#0f172a">L = 2</text>
 
-                {/* Recta y = x + 1 (pasa por x=0, y=1 -> (120, 160) y x=2, y=3 -> (360, 80)) */}
+                {/* Recta y = x + 1 */}
                 <line x1="60" y1="180" x2="420" y2="60" stroke="#2563eb" strokeWidth="3" />
 
                 {/* Líneas guía punteadas */}
                 <line x1="240" y1="200" x2="240" y2="120" stroke="#94a3b8" strokeDasharray="4 4" strokeWidth="1" />
                 <line x1="120" y1="120" x2="240" y2="120" stroke="#94a3b8" strokeDasharray="4 4" strokeWidth="1" />
 
-                {/* Punto vacío en (1, 2) -> (240, 120) */}
+                {/* Punto vacío en (1, 2) */}
                 <circle cx="240" cy="120" r="6" fill="#ffffff" stroke="#dc2626" strokeWidth="2.5" />
                 <text x="255" y="115" fontSize="11" fill="#dc2626" fontWeight="bold">Punto no definido (1, 2)</text>
 
                 {/* Flechas de aproximación lateral */}
-                <path d="M 180 200 L 225 200" stroke="#059669" strokeWidth="2" markerEnd="url(#arrow)" />
+                <path d="M 180 200 L 225 200" stroke="#059669" strokeWidth="2" />
                 <text x="175" y="190" fontSize="10" fill="#059669" fontWeight="bold">x → 1⁻</text>
 
                 <path d="M 300 200 L 255 200" stroke="#059669" strokeWidth="2" />
@@ -221,10 +233,22 @@ export default function LimitesPage() {
             </div>
           </div>
         </div>
+
+        {/* CTA Siguiente sección */}
+        <div className="section-next-cta-wrap">
+          <button 
+            type="button" 
+            className="btn btn-secondary next-section-btn" 
+            onClick={() => scrollToSub('laterales')}
+          >
+            <span>Siguiente: 2. Límites Laterales y Existencia</span>
+            <ArrowRight size={16} />
+          </button>
+        </div>
       </section>
 
       {/* SECCIÓN 2: LÍMITES LATERALES Y EXISTENCIA */}
-      <section id="laterales" className="section-container">
+      <section id="laterales" className="section-container scroll-section">
         <div className="section-header">
           <div className="section-stage-badge badge-green">
             <span>Condición Necesaria y Suficiente</span>
@@ -248,10 +272,10 @@ export default function LimitesPage() {
           ))}
         </div>
 
-        {/* Teorema de Existencia */}
-        <div className="theorem-card">
+        {/* Teorema de existencia y unicidad */}
+        <div className="existence-theorem-card">
           <h4>{LATERAL_LIMITS.existenceTheorem.title}</h4>
-          <div className="theorem-math">
+          <div className="theorem-formula-box">
             <MathView math={LATERAL_LIMITS.existenceTheorem.formula} block />
           </div>
           <ul className="theorem-rules-list">
@@ -261,11 +285,12 @@ export default function LimitesPage() {
           </ul>
         </div>
 
-        {/* Ejemplos de Comparación del Apunte */}
-        <div className="laterals-comparison-wrapper">
-          <h4 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>
-            Casos de Cátedra: Funciones por tramos evaluadas en x = 2
-          </h4>
+        {/* Comparativa pedagógica de ejemplos con mini-resumen de 1 línea */}
+        <div className="comparison-section">
+          <h4>Comparativa Clave: ¿Cuándo existe el límite y cuándo no?</h4>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
+            Observá el comportamiento de estas dos funciones partidas en el punto de empalme <MathView math="x_0 = 2" />:
+          </p>
 
           <div className="comparison-cards-grid">
             {LATERAL_LIMITS.examples.map((ex) => (
@@ -277,6 +302,11 @@ export default function LimitesPage() {
                     <XCircle size={18} style={{ color: 'var(--red-600)' }} />
                   )}
                   <h5>{ex.title}</h5>
+                </div>
+
+                {/* Mini-resumen de 1 línea */}
+                <div className={`case-summary-pill ${ex.exists ? 'summary-exists' : 'summary-not-exists'}`}>
+                  <strong>{ex.summaryLine}</strong>
                 </div>
 
                 <div className="case-formula">
@@ -295,17 +325,29 @@ export default function LimitesPage() {
                 </div>
 
                 <div className="case-conclusion-box">
-                  <strong>Diagnóstico:</strong>
+                  <strong>Diagnóstico Cátedra:</strong>
                   <p><MathView math={ex.conclusion} /></p>
                 </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* CTA Siguiente sección */}
+        <div className="section-next-cta-wrap">
+          <button 
+            type="button" 
+            className="btn btn-secondary next-section-btn" 
+            onClick={() => scrollToSub('tendencias')}
+          >
+            <span>Siguiente: 3. Tendencias Directas (k/0, k/∞)</span>
+            <ArrowRight size={16} />
+          </button>
+        </div>
       </section>
 
       {/* SECCIÓN 3: TENDENCIAS DIRECTAS (k/0 y k/∞) */}
-      <section id="tendencias" className="section-container">
+      <section id="tendencias" className="section-container scroll-section">
         <div className="section-header">
           <div className="section-stage-badge badge-amber">
             <span>Álgebra de Tendencias</span>
@@ -329,6 +371,16 @@ export default function LimitesPage() {
                     <div className="tendency-info">
                       {it.note && <span className="tendency-note">{it.note}</span>}
                       {it.status && <strong className="tendency-status">{it.status}</strong>}
+                      {it.clarification && (
+                        <div className="tendency-clarification-box">
+                          {it.clarification}
+                        </div>
+                      )}
+                      {it.warning && (
+                        <div className="tendency-warning-box">
+                          {it.warning}
+                        </div>
+                      )}
                       {it.action && <span className="tendency-action">➔ Artificio: {it.action}</span>}
                     </div>
                   </div>
@@ -360,7 +412,7 @@ export default function LimitesPage() {
             <TrendingUp size={22} style={{ color: 'var(--amber-600)' }} />
           </div>
           <div className="bridge-content">
-            <strong>¿La tendencia directa dio infinito (<MathView math="k / 0 \to \infty" />) o evaluaste al infinito (<MathView math="x \to \pm\infty" />)?</strong>
+            <strong>¿La tendencia directa dio infinito (<MathView math="k / 0 \to \pm\infty" />) o evaluaste al infinito (<MathView math="x \to \pm\infty" />)?</strong>
             <p>
               Estos comportamientos son exactamente la definición analítica de <strong>Asíntotas Verticales (AV)</strong> y <strong>Asíntotas Horizontales (AH)</strong>.
             </p>
@@ -369,13 +421,25 @@ export default function LimitesPage() {
             </Link>
           </div>
         </div>
+
+        {/* CTA Siguiente sección */}
+        <div className="section-next-cta-wrap">
+          <button 
+            type="button" 
+            className="btn btn-secondary next-section-btn" 
+            onClick={() => scrollToSub('propiedades')}
+          >
+            <span>Siguiente: 4. Propiedades Algebraicas</span>
+            <ArrowRight size={16} />
+          </button>
+        </div>
       </section>
 
       {/* SECCIÓN 4: PROPIEDADES ALGEBRAICAS */}
-      <section id="propiedades" className="section-container">
+      <section id="propiedades" className="section-container scroll-section">
         <div className="section-header">
           <div className="section-stage-badge badge-blue">
-            <span>Operaciones con Límites</span>
+            <span>Operaciones de Límites</span>
           </div>
           <h2 className="section-title">{ALGEBRAIC_PROPERTIES.title}</h2>
           <p className="section-desc">
@@ -386,7 +450,10 @@ export default function LimitesPage() {
         {/* Grilla de las 8 propiedades del Apunte */}
         <div className="properties-grid">
           {ALGEBRAIC_PROPERTIES.properties.map((prop) => (
-            <div key={prop.num} className={`property-card ${prop.critical ? 'property-card-critical' : ''}`}>
+            <div 
+              key={prop.num} 
+              className={`property-card ${prop.critical ? 'property-card-critical' : ''} ${prop.hasIndeterminationCallout ? 'property-card-exponential' : ''}`}
+            >
               <div className="property-num">{prop.num}</div>
               <div className="property-body">
                 <h6>{prop.name}</h6>
@@ -395,6 +462,17 @@ export default function LimitesPage() {
                 </div>
                 {prop.critical && (
                   <span className="property-warning-tag">¡Condición clave: denominador ≠ 0!</span>
+                )}
+                {prop.hasIndeterminationCallout && (
+                  <div className="property-indetermination-callout">
+                    <AlertTriangle size={15} style={{ color: 'var(--amber-600)', flexShrink: 0 }} />
+                    <span>
+                      <strong>NO aplica</strong> a formas <MathView math="1^\infty" />, <MathView math="0^0" /> o <MathView math="\infty^0" />.{' '}
+                      <Link to="/indeterminaciones" className="inline-callout-link">
+                        Salvar en Indeterminaciones →
+                      </Link>
+                    </span>
+                  </div>
                 )}
               </div>
             </div>
@@ -425,14 +503,26 @@ export default function LimitesPage() {
           <div className="warning-action-row">
             <Link to="/indeterminaciones" className="btn btn-primary">
               <GitBranch size={16} />
-              <span>Sustituí y obtuve 0/0 o ∞/∞ ➔ Salvar en Módulo de Indeterminaciones</span>
+              <span>Sustituí y obtuve una indeterminación ➔ Salvar en Módulo C</span>
             </Link>
           </div>
         </div>
+
+        {/* CTA Siguiente sección */}
+        <div className="section-next-cta-wrap">
+          <button 
+            type="button" 
+            className="btn btn-secondary next-section-btn" 
+            onClick={() => scrollToSub('epsilon')}
+          >
+            <span>Siguiente: 5. Definición Formal (ε - δ)</span>
+            <ArrowRight size={16} />
+          </button>
+        </div>
       </section>
 
-      {/* SECCIÓN 5: DEFINICIÓN FORMAL (ÉPSILON - DELTA) COLAPSADA */}
-      <section id="epsilon" className="section-container">
+      {/* SECCIÓN 5: DEFINICIÓN FORMAL (ÉPSILON - DELTA) COLAPSADA POR DEFECTO */}
+      <section id="epsilon" className="section-container scroll-section">
         <div className="section-header">
           <div className="section-stage-badge badge-purple">
             <span>Formalismo Matemático</span>
@@ -445,6 +535,7 @@ export default function LimitesPage() {
 
         <div className="accordion-card">
           <button 
+            type="button"
             className="accordion-toggle-btn"
             onClick={() => setIsEpsilonOpen(!isEpsilonOpen)}
             aria-expanded={isEpsilonOpen}

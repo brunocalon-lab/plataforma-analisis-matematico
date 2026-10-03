@@ -22,7 +22,7 @@ export default function SecondaryFormsModal({ isOpen, onClose }) {
       padding: '1.5rem'
     }}>
       <div style={{
-        background: '#ffffff',
+        background: 'var(--bg-card)',
         borderRadius: 'var(--radius-xl)',
         maxWidth: '860px',
         width: '100%',
@@ -88,7 +88,7 @@ export default function SecondaryFormsModal({ isOpen, onClose }) {
                 </div>
               )}
 
-              <div style={{ background: '#fff', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '0.85rem 1rem', margin: '0.75rem 0', whiteSpace: 'pre-line', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+              <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '0.85rem 1rem', margin: '0.75rem 0', whiteSpace: 'pre-line', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
                 <strong>Método de Resolución:</strong>
                 <br />
                 {sec.method}

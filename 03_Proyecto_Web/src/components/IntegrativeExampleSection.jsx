@@ -80,7 +80,7 @@ export default function IntegrativeExampleSection() {
           <h3 className="step-main-title">{currentStep.title}</h3>
           <p className="step-desc">{currentStep.content}</p>
 
-          <div style={{ background: '#ffffff', borderRadius: 'var(--radius-md)', padding: '1.5rem', border: '1px solid var(--border-medium)', margin: '1rem 0' }}>
+          <div style={{ background: 'var(--bg-card)', borderRadius: 'var(--radius-md)', padding: '1.5rem', border: '1px solid var(--border-medium)', margin: '1rem 0' }}>
             <MathView math={currentStep.math} block />
           </div>
 
