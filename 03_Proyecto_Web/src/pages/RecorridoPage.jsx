@@ -56,7 +56,7 @@ export default function RecorridoPage() {
         </Link>
         <span className="breadcrumb-separator">/</span>
         <span className="breadcrumb-current">Módulo A · Recorrido Guiado</span>
-        <span className="module-badge-validated badge-recommended" style={{ marginLeft: 'auto' }}>
+        <span className="module-badge-validated badge-recommended">
           Ruta Paso a Paso ({progressPercent}% Completado)
         </span>
       </div>

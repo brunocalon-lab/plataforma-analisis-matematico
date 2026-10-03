@@ -57,8 +57,8 @@ export default function IdentificationSection({
           </p>
         </div>
         <button 
-          className="btn" 
-          style={{ background: 'var(--purple-600)', color: '#fff', fontSize: '0.85rem' }}
+          className="btn btn-purple" 
+          style={{ fontSize: '0.85rem' }}
           onClick={onOpenSecondaryModal}
         >
           <Layers size={15} />

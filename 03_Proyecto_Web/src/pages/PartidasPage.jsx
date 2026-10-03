@@ -35,7 +35,7 @@ export default function PartidasPage() {
         </Link>
         <span className="breadcrumb-separator">/</span>
         <span className="breadcrumb-current">Módulo E · Funciones Partidas</span>
-        <span className="module-badge-validated badge-purple" style={{ marginLeft: 'auto' }}>
+        <span className="module-badge-validated badge-purple">
           Especial por Tramos
         </span>
       </div>
@@ -286,7 +286,7 @@ export default function PartidasPage() {
       )}
 
       {/* PUENTES SUAVES */}
-      <div className="soft-bridges-container" style={{ marginTop: '2.5rem' }}>
+      <div className="soft-bridges-container">
         <div className="soft-bridge-card">
           <div className="bridge-card-header">
             <span className="bridge-badge badge-blue">¿Apareció 0/0 en algún tramo?</span>
@@ -295,7 +295,7 @@ export default function PartidasPage() {
           <p>
             Si en el punto de corte la sustitución del tramo arroja 0/0, aplicá factorización o conjugado antes de decidir si el límite existe.
           </p>
-          <Link to="/indeterminaciones" className="bridge-link-btn" style={{ borderColor: 'var(--blue-400)', background: 'var(--blue-50)', color: 'var(--blue-700)' }}>
+          <Link to="/indeterminaciones" className="bridge-link-btn bridge-btn-blue">
             <GitBranch size={15} />
             <span>Ver Métodos de Factorización (Módulo C) →</span>
           </Link>

@@ -52,7 +52,7 @@ export default function DiagnosticAssistant({ onNavigateToTree }) {
         {/* Si estamos en una pregunta activa */}
         {currentQuestion && (
           <div className="assistant-question-box">
-            <h4 style={{ fontSize: '1.15rem', color: 'var(--blue-950)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <h4 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <HelpCircle size={20} style={{ color: 'var(--blue-600)' }} />
               <span>{currentQuestion.question}</span>
             </h4>
@@ -80,7 +80,7 @@ export default function DiagnosticAssistant({ onNavigateToTree }) {
               <h4>{result.title}</h4>
             </div>
 
-            <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--green-800)', marginBottom: '0.5rem' }}>
+            <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--green-700)', marginBottom: '0.5rem' }}>
               Estrategia Sugerida: {result.strategy}
             </div>
 
@@ -88,8 +88,8 @@ export default function DiagnosticAssistant({ onNavigateToTree }) {
               {result.explanation}
             </p>
 
-            <div style={{ background: 'var(--bg-card)', padding: '0.85rem 1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--green-100)', marginBottom: '1.25rem', fontSize: '0.9rem', color: 'var(--green-800)' }}>
-              <strong>Acción pedagógica:</strong> {result.recommendedAction}
+            <div style={{ background: 'var(--bg-card)', padding: '0.85rem 1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-medium)', marginBottom: '1.25rem', fontSize: '0.9rem', color: 'var(--text-primary)' }}>
+              <strong style={{ color: 'var(--green-700)' }}>Acción pedagógica:</strong> {result.recommendedAction}
             </div>
 
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>

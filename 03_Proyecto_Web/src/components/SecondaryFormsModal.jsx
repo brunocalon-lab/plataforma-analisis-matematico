@@ -59,7 +59,7 @@ export default function SecondaryFormsModal({ isOpen, onClose }) {
             <Layers size={13} />
             <span>Formas Secundarias del Apunte</span>
           </div>
-          <h3 style={{ fontSize: '1.4rem', color: 'var(--blue-950)' }}>
+          <h3 style={{ fontSize: '1.4rem', color: 'var(--text-primary)' }}>
             Otras Formas Indeterminadas: 1^∞, 0 · ∞, 0^0, ∞^0
           </h3>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>

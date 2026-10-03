@@ -35,11 +35,6 @@ export default function Topbar() {
     <header className="navbar">
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand" title="Ir al Hub Principal">
-          <img
-            src="/logo-univ-palermo.png"
-            alt="Universidad de Palermo"
-            className="topbar-univ-logo"
-          />
           <div className="brand-badge">UP&nbsp;·&nbsp;CÁLCULO</div>
           <div className="brand-titles">
             <span className="brand-title">Plataforma de Análisis&nbsp;Matemático&nbsp;I</span>

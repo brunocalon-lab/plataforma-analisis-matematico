@@ -28,7 +28,7 @@ export default function IntegrativeExampleSection() {
     <section id="ejemplo" className="section-container">
       <div className="section-header">
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
-          <span className="section-stage-badge badge-orange">Etapa 5 · Transformación</span>
+          <span className="section-stage-badge badge-amber">Etapa 5 · Transformación</span>
           <span className="section-stage-badge badge-blue">Etapa 6 · Resultado</span>
         </div>
         <h2 className="section-title">Laboratorio Interactivo: Ejemplo Integrador Central</h2>

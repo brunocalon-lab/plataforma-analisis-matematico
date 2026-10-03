@@ -36,7 +36,7 @@ export default function AsintotasPage() {
         </Link>
         <span className="breadcrumb-separator">/</span>
         <span className="breadcrumb-current">Módulo D · Asíntotas</span>
-        <span className="module-badge-validated" style={{ background: 'var(--amber-100)', color: 'var(--amber-800)', borderColor: 'var(--amber-500)' }}>
+        <span className="module-badge-validated badge-amber">
           Cálculo Analítico (AV, AH, AO)
         </span>
       </div>
@@ -53,93 +53,115 @@ export default function AsintotasPage() {
       </div>
 
       {/* Las Tres Grandes Ramas Asintóticas */}
-      <div className="asymptotes-types-grid">
-        {/* AV */}
-        <div className="asymptote-card border-amber">
-          <div className="asymptote-card-header">
-            <span className="type-badge badge-amber">Recta Vertical</span>
-            <h3>{VERTICAL_ASYMPTOTE.title}</h3>
-            <div className="asymptote-eq-pill">
-              <MathView math={VERTICAL_ASYMPTOTE.equation} />
-            </div>
+      <section className="section-container">
+        <div className="section-header">
+          <div className="section-stage-badge badge-blue">
+            <span>Clasificación Fundamental</span>
           </div>
-          <div className="asymptote-condition-box">
-            <strong>Condición analítica:</strong>
-            <MathView math={VERTICAL_ASYMPTOTE.condition} block />
-            <p>{VERTICAL_ASYMPTOTE.criterio}</p>
-          </div>
-          <div className="asymptote-where-box">
-            <h6>¿Dónde buscar candidatos?</h6>
-            <ul>
-              {VERTICAL_ASYMPTOTE.whereToLook.map((w, i) => (
-                <li key={i}>{w}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="asymptote-warning-mini">
-            <AlertTriangle size={15} style={{ color: 'var(--red-600)', flexShrink: 0 }} />
-            <span>{VERTICAL_ASYMPTOTE.criticalAlert}</span>
-          </div>
+          <h2 className="section-title">Las Tres Ramas Asintóticas de Cátedra</h2>
+          <p className="section-desc">
+            Estudio formal de rectas hacia las cuales la gráfica de la función se aproxima indefinidamente.
+          </p>
         </div>
 
-        {/* AH */}
-        <div className="asymptote-card border-blue">
-          <div className="asymptote-card-header">
-            <span className="type-badge badge-blue">Recta Horizontal</span>
-            <h3>{HORIZONTAL_ASYMPTOTE.title}</h3>
-            <div className="asymptote-eq-pill">
-              <MathView math={HORIZONTAL_ASYMPTOTE.equation} />
+        <div className="asymptotes-types-grid">
+          {/* AV */}
+          <div className="asymptote-card border-amber">
+            <div className="asymptote-card-header">
+              <span className="type-badge badge-amber">Recta Vertical</span>
+              <h3>{VERTICAL_ASYMPTOTE.title}</h3>
+              <div className="asymptote-eq-pill">
+                <MathView math={VERTICAL_ASYMPTOTE.equation} />
+              </div>
+            </div>
+            <div className="asymptote-condition-box">
+              <strong>Condición analítica:</strong>
+              <div className="asymptote-condition-stack">
+                <span className="condition-formula"><MathView math="\lim_{x \to a} f(x) = \pm\infty" /></span>
+                <span className="condition-or-pill">o bien</span>
+                <span className="condition-formula"><MathView math="\lim_{x \to a^+} f(x) = \pm\infty" /></span>
+                <span className="condition-or-pill">o bien</span>
+                <span className="condition-formula"><MathView math="\lim_{x \to a^-} f(x) = \pm\infty" /></span>
+              </div>
+              <p>{VERTICAL_ASYMPTOTE.criterio}</p>
+            </div>
+            <div className="asymptote-where-box">
+              <h6>¿Dónde buscar candidatos?</h6>
+              <ul>
+                {VERTICAL_ASYMPTOTE.whereToLook.map((w, i) => (
+                  <li key={i}>{w}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="asymptote-warning-mini">
+              <AlertTriangle size={15} style={{ color: 'var(--red-600)', flexShrink: 0 }} />
+              <span>{VERTICAL_ASYMPTOTE.criticalAlert}</span>
             </div>
           </div>
-          <div className="asymptote-condition-box">
-            <strong>Condición analítica:</strong>
-            <MathView math={HORIZONTAL_ASYMPTOTE.condition} block />
-            <p>{HORIZONTAL_ASYMPTOTE.criterio}</p>
-          </div>
-          <div className="asymptote-where-box">
-            <h6>Propiedades de Cátedra:</h6>
-            <ul>
-              {HORIZONTAL_ASYMPTOTE.observations.map((o, i) => (
-                <li key={i}>{o}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="asymptote-example-mini">
-            <strong>{HORIZONTAL_ASYMPTOTE.examples[0].title}:</strong>
-            <p>Para <MathView math={HORIZONTAL_ASYMPTOTE.examples[0].functionLatex} />:</p>
-            <MathView math={HORIZONTAL_ASYMPTOTE.examples[0].limitLeft} />
-            <span className="text-success-bold">{HORIZONTAL_ASYMPTOTE.examples[0].conclusion}</span>
-          </div>
-        </div>
 
-        {/* AO */}
-        <div className="asymptote-card border-purple">
-          <div className="asymptote-card-header">
-            <span className="type-badge badge-purple">Recta Oblicua</span>
-            <h3>{OBLIQUE_ASYMPTOTE.title}</h3>
-            <div className="asymptote-eq-pill">
-              <MathView math={OBLIQUE_ASYMPTOTE.equation} />
+          {/* AH */}
+          <div className="asymptote-card border-blue">
+            <div className="asymptote-card-header">
+              <span className="type-badge badge-blue">Recta Horizontal</span>
+              <h3>{HORIZONTAL_ASYMPTOTE.title}</h3>
+              <div className="asymptote-eq-pill">
+                <MathView math={HORIZONTAL_ASYMPTOTE.equation} />
+              </div>
+            </div>
+            <div className="asymptote-condition-box">
+              <strong>Condición analítica:</strong>
+              <div className="asymptote-condition-stack">
+                <span className="condition-formula"><MathView math="b = \lim_{x \to +\infty} f(x)" /></span>
+                <span className="condition-or-pill">y / o</span>
+                <span className="condition-formula"><MathView math="b = \lim_{x \to -\infty} f(x)" /></span>
+              </div>
+              <p>{HORIZONTAL_ASYMPTOTE.criterio}</p>
+            </div>
+            <div className="asymptote-where-box">
+              <h6>Propiedades de Cátedra:</h6>
+              <ul>
+                {HORIZONTAL_ASYMPTOTE.observations.map((o, i) => (
+                  <li key={i}>{o}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="asymptote-example-mini">
+              <strong>{HORIZONTAL_ASYMPTOTE.examples[0].title}:</strong>
+              <p>Para <MathView math={HORIZONTAL_ASYMPTOTE.examples[0].functionLatex} />:</p>
+              <MathView math={HORIZONTAL_ASYMPTOTE.examples[0].limitLeft} />
+              <span className="text-success-bold">{HORIZONTAL_ASYMPTOTE.examples[0].conclusion}</span>
             </div>
           </div>
-          <div className="asymptote-condition-box">
-            <strong>Fórmulas de Pendiente y Ordenada:</strong>
-            <MathView math={OBLIQUE_ASYMPTOTE.formulas.slopeA} block />
-            <MathView math={OBLIQUE_ASYMPTOTE.formulas.interceptB} block />
-            <p>{OBLIQUE_ASYMPTOTE.criterio}</p>
-          </div>
-          <div className="asymptote-where-box">
-            <h6>Reglas de Cátedra:</h6>
-            <ul>
-              {OBLIQUE_ASYMPTOTE.observations.map((o, i) => (
-                <li key={i}>{o}</li>
-              ))}
-            </ul>
+
+          {/* AO */}
+          <div className="asymptote-card border-purple">
+            <div className="asymptote-card-header">
+              <span className="type-badge badge-purple">Recta Oblicua</span>
+              <h3>{OBLIQUE_ASYMPTOTE.title}</h3>
+              <div className="asymptote-eq-pill">
+                <MathView math={OBLIQUE_ASYMPTOTE.equation} />
+              </div>
+            </div>
+            <div className="asymptote-condition-box">
+              <strong>Fórmulas de Pendiente y Ordenada:</strong>
+              <MathView math={OBLIQUE_ASYMPTOTE.formulas.slopeA} block />
+              <MathView math={OBLIQUE_ASYMPTOTE.formulas.interceptB} block />
+              <p>{OBLIQUE_ASYMPTOTE.criterio}</p>
+            </div>
+            <div className="asymptote-where-box">
+              <h6>Reglas de Cátedra:</h6>
+              <ul>
+                {OBLIQUE_ASYMPTOTE.observations.map((o, i) => (
+                  <li key={i}>{o}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* CHECKLIST METÓDICO DE 5 PASOS */}
-      <section className="section-container" style={{ marginTop: '2.5rem' }}>
+      <section className="section-container">
         <div className="section-header">
           <div className="section-stage-badge badge-blue">
             <ListOrdered size={14} />
@@ -165,7 +187,7 @@ export default function AsintotasPage() {
       </section>
 
       {/* LABORATORIO INTEGRADOR DE CÁTEDRA */}
-      <section className="section-container" style={{ marginTop: '2.5rem' }}>
+      <section className="section-container">
         <div className="section-header">
           <div className="section-stage-badge badge-green">
             <TrendingUp size={14} />
@@ -235,7 +257,7 @@ export default function AsintotasPage() {
       </section>
 
       {/* PUENTES SUAVES DE CONEXIÓN */}
-      <div className="soft-bridges-container" style={{ marginTop: '2.5rem' }}>
+      <div className="soft-bridges-container">
         <div className="soft-bridge-card">
           <div className="bridge-card-header">
             <span className="bridge-badge badge-blue">¿Apareció 0/0 en el candidato?</span>
@@ -244,7 +266,7 @@ export default function AsintotasPage() {
           <p>
             Si tanto el numerador como el denominador se anulan en el candidato a AV, no afirmes que hay asíntota sin antes factorizar o simplificar.
           </p>
-          <Link to="/indeterminaciones" className="bridge-link-btn" style={{ borderColor: 'var(--blue-400)', background: 'var(--blue-50)', color: 'var(--blue-700)' }}>
+          <Link to="/indeterminaciones" className="bridge-link-btn bridge-btn-blue">
             <GitBranch size={15} />
             <span>Ir a Árbol de Indeterminaciones →</span>
           </Link>

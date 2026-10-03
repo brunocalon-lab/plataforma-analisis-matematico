@@ -68,7 +68,7 @@ export default function IndeterminacionesPage() {
         </Link>
         <span className="breadcrumb-separator">/</span>
         <span className="breadcrumb-current">Módulo C · Indeterminaciones</span>
-        <span className="module-badge-validated">Módulo Validado V1</span>
+        <span className="module-badge-validated badge-green">Estrategias y Factorización</span>
       </div>
 
       {/* Sub-navegador de secciones internas de la Guía */}

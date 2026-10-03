@@ -47,7 +47,7 @@ export default function LimitesPage() {
         </Link>
         <span className="breadcrumb-separator">/</span>
         <span className="breadcrumb-current">Módulo B · ¿Qué es un Límite?</span>
-        <span className="module-badge-validated" style={{ background: 'var(--blue-100)', color: 'var(--blue-800)', borderColor: 'var(--blue-400)' }}>
+        <span className="module-badge-validated badge-blue">
           Fundamento Teórico Cátedra
         </span>
       </div>
@@ -191,7 +191,7 @@ export default function LimitesPage() {
               <svg viewBox="0 0 500 240" className="concept-svg" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" strokeWidth="1" />
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--border-subtle)" strokeWidth="1" />
                   </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#grid)" />
@@ -203,11 +203,11 @@ export default function LimitesPage() {
                 <text x="115" y="15" fontSize="12" fill="#64748b">y</text>
 
                 {/* Marcas de ejes */}
-                <line x1="240" y1="195" x2="240" y2="205" stroke="#0f172a" strokeWidth="1.5" />
-                <text x="235" y="218" fontSize="12" fontWeight="600" fill="#0f172a">x₀ = 1</text>
+                <line x1="240" y1="195" x2="240" y2="205" stroke="var(--text-primary)" strokeWidth="1.5" />
+                <text x="235" y="218" fontSize="12" fontWeight="600" fill="var(--text-primary)">x₀ = 1</text>
 
-                <line x1="115" y1="120" x2="125" y2="120" stroke="#0f172a" strokeWidth="1.5" />
-                <text x="80" y="125" fontSize="12" fontWeight="600" fill="#0f172a">L = 2</text>
+                <line x1="115" y1="120" x2="125" y2="120" stroke="var(--text-primary)" strokeWidth="1.5" />
+                <text x="80" y="125" fontSize="12" fontWeight="600" fill="var(--text-primary)">L = 2</text>
 
                 {/* Recta y = x + 1 */}
                 <line x1="60" y1="180" x2="420" y2="60" stroke="#2563eb" strokeWidth="3" />
@@ -217,7 +217,7 @@ export default function LimitesPage() {
                 <line x1="120" y1="120" x2="240" y2="120" stroke="#94a3b8" strokeDasharray="4 4" strokeWidth="1" />
 
                 {/* Punto vacío en (1, 2) */}
-                <circle cx="240" cy="120" r="6" fill="#ffffff" stroke="#dc2626" strokeWidth="2.5" />
+                <circle cx="240" cy="120" r="6" fill="var(--bg-card)" stroke="#dc2626" strokeWidth="2.5" />
                 <text x="255" y="115" fontSize="11" fill="#dc2626" fontWeight="bold">Punto no definido (1, 2)</text>
 
                 {/* Flechas de aproximación lateral */}
